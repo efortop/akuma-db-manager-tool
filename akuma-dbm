@@ -1,0 +1,36 @@
+#!/usr/bin/env php
+<?php
+
+$autoload = __DIR__ . '/../../autoload.php';
+if (file_exists($autoload)) {
+    $loader = require_once __DIR__ . '/../../autoload.php';
+} else {
+    $loader = require_once __DIR__ . '/vendor/autoload.php';
+}
+//$loader::getLoader();
+
+$appAutoload = getcwd() . '/vendor/autoload.php';
+$appBootstrap = getcwd() . '/app/bootstrap.php.cache';
+$appKernel = getcwd() . '/app/AppKernel.php';
+if (!file_exists($appBootstrap)) {
+    //Try SF 3 way
+    $appBootstrap = getcwd() . '/var/bootstrap.php.cache';
+}
+
+require_once $appAutoload;
+require_once $appBootstrap;
+require_once $appKernel;
+
+$input = new \Symfony\Component\Console\Input\ArgvInput();
+$env = $input->getParameterOption(array('--env', '-e'), getenv('SYMFONY_ENV') ?: 'dev');
+$debug = getenv('SYMFONY_DEBUG') !== '0' && !$input->hasParameterOption(array('--no-debug', '')) && $env !== 'prod';
+
+/** @var \Symfony\Component\HttpKernel\Kernel $kernel */
+$kernel = new AppKernel($env, $debug);
+if ($kernel::MAJOR_VERSION >= 3) {
+    $kernel->loadClassCache();
+}
+$kernel->boot();
+
+$application = new \Akuma\Tool\DbManager\Console\Application($kernel);
+$application->run();

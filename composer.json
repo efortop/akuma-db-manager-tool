@@ -1,0 +1,27 @@
+{
+  "name": "akuma/db-manager-tool",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/inri13666/behat-database-isolation",
+  "license": "WTFPL",
+  "authors": [
+    {
+      "name": "Nikita Makarov",
+      "email": "mesaverde228@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=5.4",
+    "gorgo13/database-component": ">=1.0",
+    "symfony/console": "^2.3 || ^3.0",
+    "symfony/filesystem": "^2.1 || ^3.0",
+    "symfony/finder": "^2.1 || ^3.0",
+    "symfony/http-kernel": "^2.3 || ^3.0",
+    "symfony/dependency-injection": "^2.3 || ^3.0"
+  },
+  "autoload": {
+    "psr-4": { "Akuma\\Tool\\DbManager\\" : "Akuma/Tool/DbManager/" }
+  },
+  "bin": ["akuma-dbm"]
+}
