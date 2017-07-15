@@ -16,4 +16,4 @@
     - `id` is suffix for dump name (be used for restore command) (OPTIONAL, Default: current date) 
 - `akuma-dbm snapshot:restore` - restores database snapshot for given connection with optional suffix
     - `connection` is connection name to be dumped (OPTIONAL, Default: null)
-    - `id` is suffix for dump name (be used for restore command) (OPTIONAL, Default: current date)
+    - `id` is suffix for dump name (be used for restore command) (*REQUIRED*)
