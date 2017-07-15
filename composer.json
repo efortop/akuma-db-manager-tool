@@ -10,7 +10,7 @@
       "email": "mesaverde228@gmail.com"
     }
   ],
-  "minimum-stability": "stable",
+  "minimum-stability": "dev",
   "require": {
     "php": ">=5.4",
     "gorgo13/database-component": ">=1.0",
